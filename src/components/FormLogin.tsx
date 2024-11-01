@@ -2,8 +2,34 @@
 import Button from "./Button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {signIn} from "next-auth/react"
 
 export default function FormLogin() {
+  const router = useRouter()
+  const [error, setError] = useState(false);
+
+  async function login(e:React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const Formdata = new FormData(e.currentTarget)
+
+    const data = {
+      username : Formdata.get('InputName'),
+      password: Formdata.get('InputPassword')
+    }
+
+    const res = await signIn("credentials", {
+      ...data,
+      redirect:false,
+      callbackUrl:"/"
+    })
+
+    if (res && !res.ok) {
+      setError(true);
+    } else {
+      router.push(res?.url || "/");
+    }
+
+  }
 
   return (
     <div>
