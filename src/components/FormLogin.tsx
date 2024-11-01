@@ -33,7 +33,7 @@ export default function FormLogin() {
 
   return (
     <div>
-      <form className="flex flex-col gap-5">
+      <form className="flex flex-col gap-5" onSubmit={login}>
         <div className="flex flex-col gap-2.5">
           <label htmlFor="InputName">Name</label>
           <input
