@@ -52,6 +52,8 @@ export default function FormLogin() {
           />
         </div>
 
+        {error && <p className="text-red-500 ml-0.75">Nome ou senha incorreta</p>}
+
         <Button value="Login" />
       </form>
     </div>

@@ -38,7 +38,7 @@ export default function FormRegister() {
 
   return (
     <div>
-      <form className="flex flex-col gap-5">
+      <form className="flex flex-col gap-5" onSubmit={register}>
         <div className="flex flex-col gap-2">
           <label htmlFor="inputName">Nome</label>
           <input
@@ -74,6 +74,8 @@ export default function FormRegister() {
             type="password"
           />
         </div>
+
+        <p className="text-red-500 ml-0.75">{error}</p>
 
         <Button value="Registrar conta" />
       </form>
