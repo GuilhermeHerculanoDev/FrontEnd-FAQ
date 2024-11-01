@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import FormLogin from '@/components/FormLogin/FormLogin';
-
+import FormLogin from '@/components/FormLogin';
 export default function Login() {
   return (
     <div>
