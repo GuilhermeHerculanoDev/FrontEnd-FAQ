@@ -1,5 +1,6 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import Navbar from '@/components/NavBar';
 
 export default async function Home() {
   const session = await getServerSession()
@@ -10,7 +11,7 @@ export default async function Home() {
 
   return (
     <div>
-      <h1>Bem vindo</h1>
+      <Navbar></Navbar>
     </div>
   );
 }
