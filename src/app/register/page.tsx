@@ -1,4 +1,4 @@
-import Img from "@/components/Image";
+import Image from 'next/image';
 import FormRegister from "@/components/FormRegister";
 import Link from 'next/link';
 
@@ -9,7 +9,7 @@ export default function Register() {
         <h1 className="text-center text-white text-3xl font-bold">
       Create your account and<br/> enjoy everything it has to <br/>offer
         </h1>
-        <Img src="/ImgRegister.png" />
+        <Image src={'/ImgRegister.png'} alt={'Register Image'} width={300} height={260}/>
       </div>
 
       <div className="bg-[#E3F9F6] flex flex-col justify-center items-center h-screen text-black">
