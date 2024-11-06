@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <div className="flex flex-col items-center gap-8 mt-8 mb-4">
+        <div className="flex flex-col items-center gap-8 mt-20 mb-4">
             <p>Connect with us</p>
 
             <div className="flex gap-4">

@@ -29,11 +29,7 @@ export default async function Home() {
 
       <div className="flex flex-col items-center mt-20 gap-8">
         <h1 className="font-bold">Popular Categories</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-bold mt-20">
-          <CardsCategory />
-          <CardsCategory />
-          <CardsCategory />
-        </div>
+        <CardsCategory />
       </div>
 
       <Footer/>
