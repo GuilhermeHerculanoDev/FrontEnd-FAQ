@@ -2,14 +2,14 @@ import NavBar from "@/components/NavBar";
 import CardsQuestions from "@/components/CardsQuestions";
 import Footer from "@/components/Footer";
 
-interface ProductPageProps {
+interface CategoryProps {
   params: {
     id: string;
     category_name: string;
   };
 }
 
-export default async function PageCategory ({ params }: ProductPageProps)  {
+export default async function PageCategory ({ params }: CategoryProps)  {
   const { id, category_name } = await params;
 
   const decodedCategoryName = decodeURIComponent(category_name as string);

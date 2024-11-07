@@ -59,7 +59,7 @@ export default function CardsQuestions(value: any) {
           { active[question.id] &&
           <div className="flex flex-col gap-4 ">
             <p className="text-left px-2 mt-2">{question.description}</p>
-            <button className="self-start px-4 py-1 border rounded-md text-left border-[rgba(0, 0, 0, 0.5)] hover:bg-green-500">Answer</button>
+            <Link className="self-start" href={`/answer/${question.id}`}><button className=" px-4 py-1 border rounded-md text-left border-[rgba(0, 0, 0, 0.5)] hover:bg-green-500">Answer</button></Link>
           </div>
           }
 
