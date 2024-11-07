@@ -2,6 +2,7 @@
 import style from "./styles.module.css"
 import { useEffect, useState } from "react";
 import { fetchClient } from "@/libs/fetchClient";
+import Link from "next/link";
 
 type Category = {
   id: number;
@@ -9,7 +10,7 @@ type Category = {
   category_description: string;
 };
 
-export default function CardsCategory() {
+export default function CardsPopularCategory() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -28,10 +29,12 @@ export default function CardsCategory() {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map(category => (
-        <div key={category.id} className={style.Container}>
+        <Link key={category.id} href={`/category/${category.id}`}>
+        <div className={style.Container}>
           <p className="font-bold">{category.category_name}</p>
           <p>{category.category_description}</p>
         </div>
+        </Link>
       ))}
       </div>
     );

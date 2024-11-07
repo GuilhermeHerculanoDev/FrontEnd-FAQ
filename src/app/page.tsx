@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Navbar from '@/components/NavBar';
 import Image from 'next/image';
 import Footer from "@/components/Footer";
-import CardsCategory from "@/components/CardsCategory";
+import CardsPopularCategory from "@/components/CardsPopularCategory";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -27,9 +27,15 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center mt-20 gap-8">
+      <div className="flex flex-col items-center mt-20 mb-10 gap-8">
         <h1 className="font-bold">Popular Categories</h1>
-        <CardsCategory />
+        <CardsPopularCategory />
+      </div>
+
+      <div className="w-4/5 h-px bg-[#262626] mx-auto mt-40"></div>
+
+      <div className="flex flex-col items-center mt-20">
+        <h1 className="font-bold">Popular Questions</h1>
       </div>
 
       <Footer/>
