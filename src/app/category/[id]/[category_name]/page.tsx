@@ -20,7 +20,7 @@ export default async function PageCategory ({ params }: CategoryProps)  {
     <div>
       <NavBar />
 
-      <h1 className="text-4xl text-center mt-20 mb-20 font-bold">Frequently asked question about {decodedCategoryName}</h1>
+      <h1 className="text-4xl text-center mt-20 mb-20 font-semibold">Frequently asked question about {decodedCategoryName}</h1>
       
       <div className="flex flex-col justify-center itens-center text-center">
         <CardsQuestions value={id} />

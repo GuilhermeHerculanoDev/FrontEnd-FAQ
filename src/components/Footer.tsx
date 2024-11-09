@@ -9,7 +9,7 @@ export default function Footer() {
                 <Image src={"/icons/icon-instagram.png"} alt={"Img icon-instagram"} width={25} height={25}/>
                 <Image src={"/icons/icon-facebook.png"} alt={"Img icon-facebook"} width={27} height={27}/>
                 <Image src={"/icons/icon-whatssap.png"} alt={"Img icon-whatssap"} width={25} height={25}/>
-                <Image src={"/icons/icon-X.png"} alt={"Img icon-X"} width={25} height={25}/>
+                <Image src={"/icons/icon-x.png"} alt={"Img icon-x"} width={25} height={25}/>
             </div>
             
             <div className="w-4/5 h-px bg-[#262626] mx-auto"></div>

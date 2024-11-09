@@ -29,7 +29,7 @@ export default function CardsPopularCategory() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map(category => (
         <Link key={category.id} href={`/category/${category.id}/${category.category_name}`}>
-        <div className={"flex flex-col gap-2.5 bg-gray-200 p-2.5 rounded text-center w-72 h-70"}>
+        <div className={"flex flex-col gap-2.5 bg-gray-200 p-2.5 rounded text-center w-72 h-71"}>
           <p className="font-bold">{category.category_name}</p>
           <p>{category.category_description}</p>
         </div>
