@@ -1,15 +1,14 @@
 interface ButtonProps {
-  value: string;
+    value: string;
 }
 
 export default function Button({ value }: ButtonProps) {
-  return (
-    <div>
-      <input
-        type="submit"
-        className="w-[440px] h-[40px] bg-[#2C73EB] border border-[#2C73EB] rounded-md text-white outline-none cursor-pointer"
-        value={value}
-      />
-    </div>
-  );
+    return (
+        <div>
+            <input className="w-[440px] bg-[#2C73EB] p-1 text-white border-white rounded-md"
+            type="submit"
+            value={value}
+            />
+        </div>
+    )
 }

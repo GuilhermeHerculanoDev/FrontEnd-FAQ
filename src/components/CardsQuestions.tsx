@@ -16,7 +16,7 @@ export default function CardsQuestions(value: any) {
   const [active, setActive] = useState<Record<number, boolean>>({});
   const [questions, setQuestions] = useState<Questions[]>([]);
   let url = value.value
-  console.log(value.value)
+  console.log(url)
 
   useEffect(() => {
       fetchClient(`http://localhost:3000/questions/searchQuestions/${url}`, {

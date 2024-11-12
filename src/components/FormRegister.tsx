@@ -1,8 +1,8 @@
 "use client"
-import Button from "./Button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createuser } from "@/app/api/users/createuser";
+import Button from "./Button";
 
 export default function FormRegister() {
   const router = useRouter()
@@ -77,7 +77,7 @@ export default function FormRegister() {
 
         <p className="text-red-500 ml-0.75">{error}</p>
 
-        <Button value="Registrar conta" />
+        <Button value="Register" />
       </form>
     </div>
   );

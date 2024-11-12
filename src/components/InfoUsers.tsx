@@ -26,6 +26,7 @@ export default function InfoUsers( value: any) {
         if (token) {
             const decoded = jwt.decode(token);
             const userUrl = decoded?.sub as string; 
+            console.log(userUrl)
             setUrl(userUrl)
         }
     }, [token]);

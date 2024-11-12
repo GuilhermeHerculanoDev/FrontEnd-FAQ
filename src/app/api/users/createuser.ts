@@ -1,7 +1,5 @@
 export const createuser = async (data: { name: FormDataEntryValue | null; email: FormDataEntryValue | null; password: FormDataEntryValue | null }) => {
 
-    console.log("Dados a serem enviados:", data);
-
     const response = await fetch("http://localhost:3000/users", {
         method: 'POST',
         body: JSON.stringify(data), 

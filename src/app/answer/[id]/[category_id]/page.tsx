@@ -7,18 +7,12 @@ import Footer from "@/components/Footer";
 interface AnswerProps {
   params: {
     id: string;
+    category_id: number
   };
 }
 
-type Questions = {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-};
-
 export default async function Answer ({ params }: AnswerProps)  {
-  const { id } = await params;
+  const { id, category_id } = await params;
 
   console.log(id)
 
@@ -42,7 +36,7 @@ export default async function Answer ({ params }: AnswerProps)  {
         </div>
 
         <div className="mt-10">
-          <CardsQuestions value={id}/>
+          <CardsQuestions value={category_id}/>
         </div>
 
 

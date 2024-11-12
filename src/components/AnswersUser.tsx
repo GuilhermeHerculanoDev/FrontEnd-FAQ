@@ -29,11 +29,13 @@ export default function AnswersUser(value: any) {
         if (token) {
             const decoded = jwt.decode(token);
             const userUrl = decoded?.sub as string; 
+            console.log(userUrl)
             setUrl(userUrl)
         }
     }, [token]);
 
     useEffect(() => {
+      if(url){
         fetchClient(`http://localhost:3000/answers/searchAnswers/${url}`, {
             method: 'GET',
         }).then(async (response) => {
@@ -43,6 +45,7 @@ export default function AnswersUser(value: any) {
                 SetAnswers(data2);
             }
         });
+      }
     }, []);
 
     return (
