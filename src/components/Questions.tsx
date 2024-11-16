@@ -18,7 +18,7 @@ type Questions = {
 export default function Question (value: any)  {
   const [question, setQuestion] = useState<Questions | null>(null)
   let url = value.value
-
+  
 
   useEffect(() => {
     fetchClient(`http://localhost:3000/questions/${url}`, {

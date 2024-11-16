@@ -47,6 +47,7 @@ export default function QuestionsUser(value: any) {
             }).then(async (response) => {
                 if (response.status === 200) {
                     const data2 = await response.json();
+                    console.log(data2)
                     setQuestions(data2);
                 }
             });

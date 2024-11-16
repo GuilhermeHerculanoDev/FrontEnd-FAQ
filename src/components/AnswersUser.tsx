@@ -14,7 +14,7 @@ type Answers = {
     date: string;
   };
 
-export default function AnswersUser(value: any) {
+export default function AnswersUser() {
     const [answers, SetAnswers] = useState<Answers[]>([]);
     const [token, setToken] = useState<string | null>(null);
     const [url, setUrl] = useState<string | null>(null);  
@@ -36,7 +36,7 @@ export default function AnswersUser(value: any) {
 
     useEffect(() => {
       if(url){
-        fetchClient(`http://localhost:3000/answers/searchAnswers/${url}`, {
+        fetchClient(`http://localhost:3000/answers/searchAnswersUser/${url}`, {
             method: 'GET',
         }).then(async (response) => {
             if (response.status === 200) {
@@ -46,8 +46,8 @@ export default function AnswersUser(value: any) {
             }
         });
       }
-    }, []);
-
+    }, [url]);
+    console.log(answers)
     return (
         <div className="flex flex-col mb-10 mt-10 gap-6">
 

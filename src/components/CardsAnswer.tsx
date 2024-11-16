@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { fetchClient } from "@/libs/fetchClient";
 import Image from "next/image";
-import Link from "next/link";
+import TextEdit from "./TextEditor";
 
 type Answer = {
   id: number;
@@ -42,6 +42,8 @@ export default function CardsAnswers(value: any) {
           <h1 className="text-2xl font-semibold">Respostas({answers.length})</h1>
           <div className="w-3/5 h-px bg-[#262626]"></div>
         </div>
+
+        <TextEdit value={url} />
 
         {answers.length === 0? (
           <p className="text-center mt-10">Não existe resposta para essa pergunta</p>

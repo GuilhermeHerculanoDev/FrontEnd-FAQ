@@ -68,12 +68,10 @@ export default function FormCreateQuestion({ value }: { value: any }) {
 
         <div className="flex flex-col gap-2.5">
           <label htmlFor="InputDescription">Description</label>
-          <input
-            className="w-[600px] h-[50px] bg-white border border-[rgba(0,0,0,0.25)] rounded-md text-black pl-2.5 outline-none"
+          <textarea
             name="InputDescription"
-            type="text"
-            placeholder="Enter the description of your question"
-          />
+            className="w-[600px] h-48 p-4 border-2 border-gray-300 rounded-lg text-lg resize-none focus:outline-none placeholder-gray-400"
+            placeholder="Digite a Descrição" />
         </div>
 
         {error && <p className="text-red-500 ml-0.75">Nome ou senha incorreta</p>}
