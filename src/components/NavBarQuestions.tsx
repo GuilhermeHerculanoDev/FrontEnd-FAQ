@@ -129,7 +129,7 @@ export default function NavBarQuestions(url: any) {
                     {active[question.id] && (
                       <div className="flex flex-col px-2 gap-4">
                         <p className="text-left mt-2">{question.description}</p>
-                        <Link className="self-start" href={`/answer/${question.id}/${number}`}>
+                        <Link className="self-start" href={`/answer/${question.id}}`}>
                           <button className="px-4 py-1 border rounded-md text-left border-black hover:bg-green-500 hover:text-white hover:border-white">
                             Answer
                           </button>

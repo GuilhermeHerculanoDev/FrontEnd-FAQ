@@ -79,7 +79,7 @@ export default function FormCreateQuestion({ value }: { value: any }) {
         {error && <p className="text-red-500 ml-0.75">Nome ou senha incorreta</p>}
 
         <div className="flex gap-14 mt-6">
-          <button onClick={() => router.back()} className="p-1 px-6 border border-black rounded-md">
+          <button onClick={() => router.back()} type="button" className="p-1 px-6 border border-black rounded-md">
             Back
           </button>
           <input type="submit" className="bg-[#2C73EB] p-1 px-2 text-white border-white rounded-md" value="create questions" />

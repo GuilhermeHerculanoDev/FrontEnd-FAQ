@@ -3,8 +3,10 @@ import { fetchClient } from "@/libs/fetchClient";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
+import Link from "next/link";
 
 type InfoUsers = {
+    id: number;
     name: string;
     email: string;
     telephone: string;
@@ -32,6 +34,7 @@ export default function InfoUsers( value: any) {
     }, [token]);
 
     useEffect(() => {
+        if( url ) {
         fetchClient(`http://localhost:3000/users/${url}`, {
             method: 'GET',
         }).then(async (response) => {
@@ -40,7 +43,7 @@ export default function InfoUsers( value: any) {
                 console.log(data); 
                 setInfoUser(data);
             }
-        });
+        });}
     }, [url]);
 
     return (
@@ -60,9 +63,11 @@ export default function InfoUsers( value: any) {
             </div>
         </div>
 
-        <button className="mt-2 w-[100px] h-[25px] bg-[#2C73EB] border border-[#2C73EB] rounded-md text-white outline-none cursor-pointer">
+        <Link href={`profile/${infoUser?.id}`} 
+        className="mt-2 w-[100px] h-[25px] bg-[#2C73EB] border border-[#2C73EB] rounded-md text-white outline-none cursor-pointer flex items-center justify-center"
+        >
             Edit
-        </button>
+        </Link>
       </div>
     );
   }
