@@ -1,8 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import {signIn} from "next-auth/react"
 import Button from "./Button";
+import { loginuser } from "@/app/api/users/loginuser";
+import jwt from "jsonwebtoken";
+
 
 export default function FormLogin() {
   const router = useRouter()
@@ -17,16 +19,21 @@ export default function FormLogin() {
       password: Formdata.get('InputPassword')
     }
 
-    const res = await signIn("credentials", {
-      ...data,
-      redirect:false,
-      callbackUrl:"/"
-    })
+    const authData = await loginuser(data);
 
-    if (res && !res.ok) {
-      setError(true);
+    if (authData && authData.token) {
+      try {
+        const decodedToken: any = jwt.decode(authData.token);
+        if (decodedToken.admin === true) {
+          alert("É um administrador")
+        }
+      } catch (error) {
+        console.error("Erro ao decodificar o token:", error);
+        router.push("/");
+      }
+      router.push("/");
     } else {
-      router.push(res?.url || "/");
+      setError(true);  
     }
 
   }
