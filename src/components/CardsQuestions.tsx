@@ -1,36 +1,27 @@
 "use client"
 import { useEffect, useState } from "react";
 import { fetchClient } from "@/libs/fetchClient";
+import { getquestionscategory } from "@/app/api/questions/getquestionscategoyr";
 import Image from "next/image";
 import Link from "next/link";
 
-type Questions = {
-  id: number;
-  user: {name:string};
-  title: string;
-  description: string;
-  date: string;
-};
 
 export default function CardsQuestions(value: any) {
   const [active, setActive] = useState<Record<number, boolean>>({});
-  const [questions, setQuestions] = useState<Questions[]>([]);
+  const [questions, setQuestions] = useState<[]>([]);
   let url = value.value
-  console.log(url)
 
   useEffect(() => {
-      fetchClient(`http://localhost:3000/questions/searchQuestions/${url}`, {
-          method: 'GET',
-      }).then(async (response) => {
-          if (response.status === 200) {
-              const data = await response.json();
-              console.log(data); 
-              setQuestions(data);
-          }
-      });
-  }, []);
-
-  
+    const fetchQuestions = async () => {
+      try {
+        const response = await getquestionscategory(url);
+        setQuestions(response || []);
+      } catch (error) {
+        console.error("Erro ao carregar Perguntas:", error);
+      } 
+    }
+    fetchQuestions();
+}, []);
 
   function open(questionId: number) {
     setActive((prev) => ({
@@ -42,7 +33,7 @@ export default function CardsQuestions(value: any) {
 
     return (
       <div className="flex flex-col items-center mb-10 gap-6">
-        {questions.map(question => (
+        {questions.map((question:any) => (
         <div key={question.id} className={"flex flex-col gap-2.5 p-2 border border-black rounded-md w-4/5 "}>
           <div className="flex justify-between cursor-pointer">
             <div className="flex gap-2 items-center mb-2 px-2">

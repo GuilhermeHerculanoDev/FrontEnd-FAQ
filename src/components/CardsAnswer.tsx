@@ -1,39 +1,28 @@
 "use client"
 import { useEffect, useState } from "react";
-import { fetchClient } from "@/libs/fetchClient";
+import { getanswersquestions } from "@/app/api/answers/getanswersquestion";
 import Image from "next/image";
 import TextEdit from "./TextEditor";
 
-type Answer = {
-  id: number;
-  user:{name:string};
-  answer: string;
-  date: string;
-};
-
 
 export default function CardsAnswers(value: any) {
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [answers, setAnswers] = useState<[]>([]);
   const [showAll, setShowAll] = useState(false)
   let url = value.value
-  console.log(value.value)
 
   useEffect(() => {
-      fetchClient(`http://localhost:3000/answers/searchAnswers/${url}`, {
-          method: 'GET',
-      }).then(async (response) => {
-          if (response.status === 200) {
-              const data = await response.json();
-              console.log(data); 
-              setAnswers(data);
-          }
-      });
-  }, []);
+    const fetchQuestions = async () => {
+      try {
+        const response = await getanswersquestions(url);
+        setAnswers(response || []);
+      } catch (error) {
+        console.error("Erro ao carregar respostas:", error);
+      } 
+    }
+    fetchQuestions();
+}, []);
 
   const respostasExibidas = showAll ? answers : answers.slice(0, 3);
-
-  console.log(answers)
-
 
     return (
       <div className="flex flex-col mb-10 mt-10 gap-6">
@@ -49,7 +38,7 @@ export default function CardsAnswers(value: any) {
           <p className="text-center mt-10">Não existe resposta para essa pergunta</p>
         ): (
 
-          respostasExibidas.map((answer) => (
+          respostasExibidas.map((answer:any) => (
         <div key={answer.id} className="flex flex-col gap-2.5 p-2 border border-black rounded-md w-4/5 mx-auto">
           <div className="flex justify-between">
             <div className="flex gap-2 items-center mb-2 px-2">

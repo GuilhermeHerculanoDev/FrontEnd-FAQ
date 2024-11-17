@@ -1,52 +1,28 @@
 "use client"
 
-import { fetchClient } from "@/libs/fetchClient";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import jwt from 'jsonwebtoken';
-import Cookies from 'js-cookie';
-import Link from "next/link";
-
-type Answers = {
-    id: number;
-    user:{name:string};
-    answer: string;
-    date: string;
-  };
+import useUserUrl from "@/libs/useUserUrl";
+import { getanswersusers } from "@/app/api/answers/getanswersusers";
 
 export default function AnswersUser() {
-    const [answers, SetAnswers] = useState<Answers[]>([]);
-    const [token, setToken] = useState<string | null>(null);
-    const [url, setUrl] = useState<string | null>(null);  
+    const api = useUserUrl()
+    console.log(api)
+    const [answers, SetAnswers] = useState<[]>([]);
 
-    useEffect(() =>{
-        const tokenFromCookie = Cookies.get('token');
-        setToken(tokenFromCookie || null);
-        console.log(token)
-    }, [])
-
+    
     useEffect(() => {
-        if (token) {
-            const decoded = jwt.decode(token);
-            const userUrl = decoded?.sub as string; 
-            console.log(userUrl)
-            setUrl(userUrl)
-        }
-    }, [token]);
-
-    useEffect(() => {
-      if(url){
-        fetchClient(`http://localhost:3000/answers/searchAnswersUser/${url}`, {
-            method: 'GET',
-        }).then(async (response) => {
-            if (response.status === 200) {
-                const data2 = await response.json();
-                console.log(data2); 
-                SetAnswers(data2);
-            }
-        });
+      const fetchQuestions = async () => {
+        try {
+          const response = await getanswersusers(api);
+          SetAnswers(response || []);
+        } catch (error) {
+          console.error("Erro ao carregar perguntas:", error);
+        } 
       }
-    }, [url]);
+      fetchQuestions();
+  }, [api]);
+
     console.log(answers)
     return (
         <div className="flex flex-col mb-10 mt-10 gap-6">
@@ -55,7 +31,7 @@ export default function AnswersUser() {
           <p className="text-center mt-10">Você não respondeu nenhuma pergunta</p>
         ): (
 
-          answers.map((answer) => (
+          answers.map((answer:any) => (
         <div key={answer.id} className="flex flex-col gap-2.5 p-2 border border-black rounded-md w-4/5 mx-auto">
           <div className="flex justify-between">
             <div className="flex gap-2 items-center mb-2 px-2">

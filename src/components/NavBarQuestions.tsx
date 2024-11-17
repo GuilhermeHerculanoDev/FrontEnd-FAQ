@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { QuestionsRoute } from "@/app/api/questions/route";
+import { getquestionscategory } from "@/app/api/questions/getquestionscategoyr";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,17 +16,16 @@ type Questions = {
   date: string;
 };
 
-export default function NavBarQuestions(url: any) {
+export default function NavBarQuestions(value: any) {
   const [active, setActive] = useState<Record<number, boolean>>({});
     const [activeButton, SetActivebutton] = useState<number | null>(null);
     const [questions, setQuestions] = useState<Questions[]>([]);
     const [filteredQuestions, setFilteredQuestions] = useState<Questions[]>([]);
-    let number = (url.value)
 
     useEffect(() => {
       const getQuestionsData = async () => {
         try {
-          const data = await QuestionsRoute(`searchQuestions/${number}`);
+          const data = await getquestionscategory(value.value);
           setQuestions(data);
           setFilteredQuestions(data)
         } catch (error) {
@@ -35,7 +34,7 @@ export default function NavBarQuestions(url: any) {
       };
   
       getQuestionsData();
-    }, [url]);
+    }, [value]);
 
     function open(questionId: number) {
       setActive((prev) => ({

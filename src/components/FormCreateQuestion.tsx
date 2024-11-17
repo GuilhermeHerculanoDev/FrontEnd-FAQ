@@ -2,12 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import useUserUrl from "@/libs/useUserUrl";
 import jwt from "jsonwebtoken";
 import Cookies from "js-cookie";
 import { createquestion } from "@/app/api/questions/createquestion";
 
 export default function FormCreateQuestion({ value }: { value: any }) {
+  const userUrl = useUserUrl()
   const router = useRouter();
   const [error, setError] = useState(false);
   const [token, setToken] = useState<string | null>(null);
@@ -15,27 +16,12 @@ export default function FormCreateQuestion({ value }: { value: any }) {
   const number = value;
   const numberCategory = parseInt(number)
 
-  useEffect(() => {
-    const tokenFromCookie = Cookies.get("token");
-    setToken(tokenFromCookie || null);
-  }, []);
-
-  useEffect(() => {
-    if (token) {
-      const decoded = jwt.decode(token);
-      console.log(decoded)
-      const userUrl = decoded?.sub as string;
-      console.log(userUrl)
-      setUrl(userUrl);
-    }
-  }, [token]);
-
   async function createQuestion(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
     const data = {
-      users_id: url,
+      users_id: userUrl,
       category_id: numberCategory,
       title: formData.get("InputTitle"),
       description: formData.get("InputDescription"),

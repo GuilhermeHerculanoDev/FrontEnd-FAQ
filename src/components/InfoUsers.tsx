@@ -1,9 +1,8 @@
 "use client"
-import { fetchClient } from "@/libs/fetchClient";
 import { useEffect, useState } from "react";
-import jwt from 'jsonwebtoken';
-import Cookies from 'js-cookie';
+import { getuser } from "@/app/api/users/getuser";
 import Link from "next/link";
+import useUserUrl from "@/libs/useUserUrl";
 
 type InfoUsers = {
     id: number;
@@ -14,37 +13,21 @@ type InfoUsers = {
 }
 
 export default function InfoUsers( value: any) {
+    const idUser = useUserUrl()
     const [infoUser, setInfoUser] = useState<InfoUsers| null>(null);
-    const [token, setToken] = useState<string | null>(null);
-    const [url, setUrl] = useState<string | null>(null);  
-
-    useEffect(() =>{
-        const tokenFromCookie = Cookies.get('token');
-        setToken(tokenFromCookie || null);
-        console.log(token)
-    }, [])
 
     useEffect(() => {
-        if (token) {
-            const decoded = jwt.decode(token);
-            const userUrl = decoded?.sub as string; 
-            console.log(userUrl)
-            setUrl(userUrl)
+        const fetchQuestions = async () => {
+          try {
+            const response = await getuser(idUser);
+            setInfoUser(response );
+          } catch (error) {
+            console.error("Erro ao carregar Perguntas:", error);
+          } 
         }
-    }, [token]);
-
-    useEffect(() => {
-        if( url ) {
-        fetchClient(`http://localhost:3000/users/${url}`, {
-            method: 'GET',
-        }).then(async (response) => {
-            if (response.status === 200) {
-                const data = await response.json();
-                console.log(data); 
-                setInfoUser(data);
-            }
-        });}
-    }, [url]);
+        fetchQuestions();
+    }, [idUser]);
+    
 
     return (
       <div className="flex flex-col justify-center items-center gap-10">

@@ -1,33 +1,27 @@
 "use client"
-import style from "./styles.module.css"
 import { useEffect, useState } from "react";
-import { fetchClient } from "@/libs/fetchClient";
+import { getallcategory } from "@/app/api/category/getallcategory";
 import Link from "next/link";
 
-type Category = {
-  id: number;
-  category_name: string;
-  category_description: string;
-};
 
 export default function CardsPopularCategory() {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<[]>([]);
 
   useEffect(() => {
-      fetchClient("http://localhost:3000/category", {
-          method: 'GET',
-      }).then(async (response) => {
-          if (response.status === 200) {
-              const data = await response.json();
-              console.log(data); 
-              setCategories(data);
-          }
-      });
-  }, []);
+    const fetchQuestions = async () => {
+      try {
+        const response = await getallcategory();
+        setCategories(response || []);
+      } catch (error) {
+        console.error("Erro ao carregar categorias:", error);
+      } 
+    }
+    fetchQuestions();
+}, []);
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categories.map(category => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {categories.map((category:any) => (
         <Link key={category.id} href={`/category/${category.id}/${category.category_name}`}>
         <div className={"flex flex-col gap-2.5 bg-gray-200 p-2.5 rounded text-center w-72 h-71"}>
           <p className="font-bold">{category.category_name}</p>

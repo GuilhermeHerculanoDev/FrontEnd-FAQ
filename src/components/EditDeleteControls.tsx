@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function EdiDeleteControls(value: any) {
     const [showScreenDelete, SetShowScreenDelete] = useState(false);
     const [showScreenEdition, SetShowScreenEdition] = useState(false);
+    const [ messageError ,SetmessageError] = useState<string | null>(null)
 
     async function editQuestion(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -17,7 +18,15 @@ export default function EdiDeleteControls(value: any) {
             description: formData.get("InputDescription"),
         };
 
-        const edition = await editionquestion(data);
+        const filteredData = Object.fromEntries(
+            Object.entries(data).filter(([_, value]) => value !== "" && value !== null)
+        );
+
+        if (Object.keys(filteredData).length === 1 && filteredData.id) {
+            return SetmessageError("Preença pelo menos um campo.");
+        }
+
+        const edition = await editionquestion(filteredData);
 
         alert(edition);
 
@@ -39,6 +48,9 @@ export default function EdiDeleteControls(value: any) {
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center flex flex-col justify-center gap-8">
                         <p>Você deseja deletar essa pergunta?</p>
+                        { messageError &&
+                            <p>{messageError}</p>
+                        }
                         <div className="flex gap-5 justify-center">
                             <button onClick={() => SetShowScreenDelete(false)} className="bg-blue-500 text-white px-4 py-2 rounded">
                                 Cancelar

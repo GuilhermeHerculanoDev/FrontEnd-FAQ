@@ -1,4 +1,3 @@
-// src/libs/useUserUrl.ts
 import { useEffect, useState } from "react";
 import jwt from "jsonwebtoken";
 import Cookies from "js-cookie";

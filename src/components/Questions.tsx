@@ -1,10 +1,8 @@
 "use client"
 
-import NavBar from "@/components/NavBar";
-import CardsAnswers from "@/components/CardsAnswer";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { fetchClient } from "@/libs/fetchClient";
+import { getquestion } from "@/app/api/questions/getquestion";
 
 
 type Questions = {
@@ -17,19 +15,17 @@ type Questions = {
 
 export default function Question (value: any)  {
   const [question, setQuestion] = useState<Questions | null>(null)
-  let url = value.value
   
-
   useEffect(() => {
-    fetchClient(`http://localhost:3000/questions/${url}`, {
-        method: 'GET',
-    }).then(async (response) => {
-        if (response.status === 200) {
-            const data2 = await response.json();
-            console.log(data2); 
-            setQuestion(data2);
-        }
-    });
+    const fetchQuestions = async () => {
+      try {
+        const response = await getquestion(value.value);
+        setQuestion(response || null);
+      } catch (error) {
+        console.error("Erro ao carregar pergunta:", error);
+      } 
+    }
+    fetchQuestions();
 }, []);
 
   return (
