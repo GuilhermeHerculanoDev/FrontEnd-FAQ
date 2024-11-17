@@ -25,13 +25,15 @@ export default function FormLogin() {
       try {
         const decodedToken: any = jwt.decode(authData.token);
         if (decodedToken.admin === true) {
-          alert("É um administrador")
+          router.push("/admin")
+        }else{
+          router.push("/")
         }
+        setError(false)
       } catch (error) {
         console.error("Erro ao decodificar o token:", error);
-        router.push("/");
+        setError(true)
       }
-      router.push("/");
     } else {
       setError(true);  
     }
