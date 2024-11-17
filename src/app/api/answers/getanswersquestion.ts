@@ -3,7 +3,7 @@ import { fetchClient } from "@/libs/fetchClient";
 
 export const getanswersquestions = async (value:any) => {
 
-    const response = await fetchClient(`http://localhost:3000/answers/searchAnswers/${value}`, {
+    const response = await fetch(`http://localhost:3000/answers/searchAnswers/${value}`, {
       method: "GET",
     });
   

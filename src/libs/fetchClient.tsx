@@ -19,7 +19,7 @@ export const fetchClient = async (
     })
 
     if (response.status === 401){
-        await signOut()
+         console.warn("Sessão expirada. Por favor, faça login novamente.");
     }
 
     return response

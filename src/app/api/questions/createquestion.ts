@@ -14,11 +14,11 @@ export const createquestion = async (data:any) => {
       const user = await response.json();
       if (user.message) {
         console.log(user.message);
-        return user.message;
+        return user.message[0];
       }
     }
   
-    if (response.status === 201) {
+    if (response.status === 200) {
       return "Questão criada com sucesso";
     }
   

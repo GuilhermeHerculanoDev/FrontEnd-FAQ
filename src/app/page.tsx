@@ -7,11 +7,6 @@ import CardsPopularCategory from "@/components/CardsPopularCategory";
 import PupularQuestions from "@/components/PopularQuestions";
 
 export default async function Home() {
-  const session = await getServerSession();
-
-  if (!session) {
-    redirect("/login");
-  }
 
   return (
     <div className="flex flex-col">

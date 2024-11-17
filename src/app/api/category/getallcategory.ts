@@ -3,7 +3,7 @@ import { fetchClient } from "@/libs/fetchClient";
 
 export const getallcategory = async () => {
 
-    const response = await fetchClient(`http://localhost:3000/category`, {
+    const response = await fetch(`http://localhost:3000/category`, {
       method: "GET",
     });
   

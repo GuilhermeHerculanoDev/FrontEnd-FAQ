@@ -4,12 +4,15 @@ import InfoUsers from "@/components/InfoUsers"
 import QuestionsUser from "@/components/QuestionsUser"
 import AnswersUser from "@/components/AnswersUser"
 import Footer from "@/components/Footer"
+import UserNotLogged from "@/components/UserNotLogged";
   
 export default function PageProfile ()  {
 
     return (
         <div className="flex flex-col ">
             <NavBar />
+
+            <UserNotLogged />
 
             <div className="flex flex-col items-center justify-center mt-10">
                 <Image src={"/profile.png"} alt="Image Profile User" width={100} height={100} />

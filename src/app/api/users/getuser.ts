@@ -7,7 +7,7 @@ export const getuser = async (value:any) => {
       method: "GET",
     });
   
-    if (response.status === 400) {
+    if (!response.ok) {
       const user = await response.json();
       if (user.message) {
         console.log(user.message);
