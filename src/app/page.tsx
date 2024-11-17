@@ -4,6 +4,7 @@ import Navbar from '@/components/NavBar';
 import Image from 'next/image';
 import Footer from "@/components/Footer";
 import CardsPopularCategory from "@/components/CardsPopularCategory";
+import PupularQuestions from "@/components/PopularQuestions";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -34,8 +35,9 @@ export default async function Home() {
 
       <div className="w-4/5 h-px bg-[#262626] mx-auto mt-40"></div>
 
-      <div className="flex flex-col items-center mt-20">
+      <div className="flex flex-col items-center mt-20 gap-8">
         <h1 className="font-bold">Popular Questions</h1>
+        <PupularQuestions />
       </div>
 
       <Footer/>
