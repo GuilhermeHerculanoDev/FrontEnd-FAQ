@@ -2,18 +2,17 @@
 import { useEffect, useState } from "react";
 import { getanswersquestions } from "@/app/api/answers/getanswersquestion";
 import Image from "next/image";
-import TextEdit from "./TextEditor";
+import TextEdit from "../Utils/TextEditor";
 
 
 export default function CardsAnswers(value: any) {
   const [answers, setAnswers] = useState<[]>([]);
   const [showAll, setShowAll] = useState(false)
-  let url = value.value
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await getanswersquestions(url);
+        const response = await getanswersquestions(value.value);
         setAnswers(response || []);
       } catch (error) {
         console.error("Erro ao carregar respostas:", error);
@@ -32,7 +31,7 @@ export default function CardsAnswers(value: any) {
           <div className="w-3/5 h-px bg-[#262626]"></div>
         </div>
 
-        <TextEdit value={url} />
+        <TextEdit value={value.value} />
 
         {answers.length === 0? (
           <p className="text-center mt-10">Não existe resposta para essa pergunta</p>
@@ -50,14 +49,6 @@ export default function CardsAnswers(value: any) {
 
           <p className="px-2">{answer.answer}</p>
 
-          <div className="flex px-2 gap-4 mt-2 mb-2 ">
-            <button>
-              <Image src={"/icon-like.png"} alt="Image icon-like" width={18} height={18} />
-            </button>
-            <button className="rotate-180">
-              <Image src={"/icon-like.png"} alt="Image icon-like" width={18} height={18} />
-            </button>
-          </div>
         </div>
       )))|| "Não existe resposta para essa pergunta"}
 

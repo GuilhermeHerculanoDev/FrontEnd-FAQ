@@ -8,11 +8,7 @@ export const getallusers = async () => {
     });
   
     if (!response.ok) {
-      const user = await response.json();
-      if (user.message) {
-        console.log(user.message);
-        return user.message;
-      }
+      return []
     }
   
     if (response.status === 200) {

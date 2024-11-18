@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Button from "./Button";
 import { loginuser } from "@/app/api/users/loginuser";
 import jwt from "jsonwebtoken";
 
@@ -63,7 +62,10 @@ export default function FormLogin() {
 
         {error && <p className="text-red-500 ml-0.75">Nome ou senha incorreta</p>}
 
-        <Button value="Login" />
+        <input className="w-[440px] bg-[#2C73EB] p-1 text-white border-white rounded-md"
+            type="submit"
+            value={'Login'}
+            />
       </form>
     </div>
   );

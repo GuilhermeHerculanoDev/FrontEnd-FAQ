@@ -1,5 +1,5 @@
-import NavBarAdmin from "@/components/NavBarAdmin"
-import AdminFormCreateCategory from "@/components/AdminFormCreateCategory"
+import NavBarAdmin from "@/components/Admin/NavBarAdmin"
+import AdminFormCreateCategory from "@/components/Admin/AdminFormCreateCategory"
 
 export default function Page() {
     return (

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getquestionuser } from "@/app/api/questions/getquestionuser";
-import EdiDeleteControls from "./EditDeleteControls";
+import EditDeleteControls from "../Utils/EditDeleteQuestions";
 import Image from "next/image";
 import Link from "next/link";
 import useUserUrl from "@/libs/useUserUrl";
@@ -51,7 +51,7 @@ export default function QuestionsUser(value: any) {
                 </div>
 
                 <div className="flex justify-start px-2 gap-2 mt-2 mb-1">
-                    <EdiDeleteControls value={question.id} />
+                    <EditDeleteControls value={question.id} />
                 </div>
             </div>
             )))|| "Você não tem perguntas"}

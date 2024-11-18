@@ -40,11 +40,12 @@ export default function AdminAllUsers() {
                                 <th className="px-4 py-2 text-left bg-gray-100">User</th>
                                 <th className="px-4 py-2 text-left bg-gray-100">Email</th>
                                 <th className="px-4 py-2 text-left bg-gray-100">Description</th>
+                                <th className="px-4 py-2 text-left bg-gray-100">Adm</th>
                                 <th className="px-4 py-2 text-left bg-gray-100">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
-                            { allUsers.length == 0 ?(
+                            { allUsers.length === 0 ?(
                             <tr>
                             <td colSpan={4} className="text-center py-4">
                                 Nenhum Usuário disponível
@@ -57,8 +58,9 @@ export default function AdminAllUsers() {
                                 <td className="px-4 py-2 border-b">{users.name}</td>
                                 <td className="px-4 py-2 border-b">{users.email}</td>
                                 <td className="px-4 py-2 border-b">{users.description}</td>
+                                <td className="px-4 py-2 border-b">{users.is_admin ? "Sim" : "Não"}</td>
                                 <td className="px-4 py-2 border-b">
-                                <button className="text-red-500 hover:underline" onClick={() => deleteuser(users.id)}>Delete</button>
+                                <button className="text-red-500 hover:underline" onClick={() => {deleteuser(users.id); location.reload()}}>Delete</button>
                                 </td>
                             </tr>         
                             

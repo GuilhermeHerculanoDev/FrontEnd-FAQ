@@ -1,5 +1,5 @@
-import NavBarAdmin from "@/components/NavBarAdmin"
-import AdminFormCreateUser from "@/components/AdminFormCreateUser"
+import NavBarAdmin from "@/components/Admin/NavBarAdmin"
+import AdminFormCreateUser from "@/components/Admin/AdminFormCreateUser"
 
 export default function Page() {
     return (

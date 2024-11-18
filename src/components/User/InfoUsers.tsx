@@ -32,17 +32,17 @@ export default function InfoUsers( value: any) {
     return (
       <div className="flex flex-col justify-center items-center gap-10">
         <div className=" flex flex-col text-center gap-2 mt-4">
-            <p>{infoUser?.name}</p>
-            <p>{infoUser?.description}</p>
+            <p className="text-lg	font-semibold">{infoUser?.name}</p>
+            <p className="text-[#606060]">{infoUser?.description}</p>
         </div>
         <div className="flex gap-40 mt-6">
             <div className="flex flex-col">
                 <p className="font-semibold">Email:</p>
-                <p>{infoUser?.email}</p>
+                <p className="text-[#606060]">{infoUser?.email}</p>
             </div>
             <div className="flex flex-col">
                 <p className="font-semibold">Telefone:</p>
-                <p>{infoUser?.telephone}</p>
+                <p className="text-[#606060]">{infoUser?.telephone}</p>
             </div>
         </div>
 

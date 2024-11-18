@@ -1,10 +1,8 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import Navbar from '@/components/NavBar';
+import Navbar from '@/components/Utils/NavBar';
 import Image from 'next/image';
-import Footer from "@/components/Footer";
-import CardsPopularCategory from "@/components/CardsPopularCategory";
-import PupularQuestions from "@/components/PopularQuestions";
+import Footer from '@/components/Utils/Footer';
+import CardsPopularCategory from "@/components/Category/CardsCategory";
+import PupularQuestions from "@/components/Questions/PopularQuestions";
 
 export default async function Home() {
 
@@ -23,14 +21,14 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center mt-20 mb-10 gap-2">
+      <div className="flex flex-col items-center mt-20 gap-2">
         <h1 className="font-bold">Popular Categories</h1>
-        <CardsPopularCategory />
+        <CardsPopularCategory value={6}/>
       </div>
 
-      <div className="w-4/5 h-px bg-[#262626] mx-auto mt-20 mb-20"></div>
+      <div className="w-4/5 h-px bg-[#262626] mx-auto mt-40 mb-40"></div>
 
-      <div className="flex flex-col items-center mt-20 mb-20 gap-8">
+      <div className="flex flex-col items-center  mb-20 gap-8">
         <h1 className="font-bold">Popular Questions</h1>
         <PupularQuestions />
       </div>

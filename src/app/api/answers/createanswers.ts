@@ -4,6 +4,7 @@ import { fetchClient } from "@/libs/fetchClient";
 
 
   export const createanswers = async (data: any) => {
+    try{
     const response = await fetchClient(`http://localhost:3000/answers/`, {
         method: "POST",
         body: JSON.stringify(data),
@@ -14,4 +15,7 @@ import { fetchClient } from "@/libs/fetchClient";
       throw new Error("Erro ao responder pergunta");
     }
     return "Respondida com sucesso";
+  }catch(error){
+    return "Error a procurar na api"
+  }
   };

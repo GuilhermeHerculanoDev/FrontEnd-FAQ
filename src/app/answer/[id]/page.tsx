@@ -1,8 +1,8 @@
-import NavBar from "@/components/NavBar";
-import CardsAnswers from "@/components/CardsAnswer";
-import Question from "@/components/Questions";
-import CardsQuestions from "@/components/CardsQuestions";
-import Footer from "@/components/Footer";
+import NavBar from "@/components/Utils/NavBar";
+import CardsAnswers from "@/components/Answers/CardsAnswer";
+import Question from "@/components/Questions/Questions";
+import CardsQuestions from "@/components/Questions/CardsQuestions";
+import Footer from "@/components/Utils/Footer";
 
 interface AnswerProps {
   params: {
@@ -13,13 +13,10 @@ interface AnswerProps {
 export default async function Answer ({ params }: AnswerProps)  {
   const { id } = await params;
 
-  console.log(id)
-
   return (
-    <div>
+    <div className="min-h-screen">
         <NavBar />
 
-        {/* <h1 className="text-4xl text-center font-semibold mt-10">Pergunta</h1> */}
 
         <div className="flex flex-col items-center mb-10 mt-10 gap-6">
           <Question value = {id} />
@@ -39,7 +36,6 @@ export default async function Answer ({ params }: AnswerProps)  {
         </div>
 
 
-        <Footer />
     </div>
   )
 };

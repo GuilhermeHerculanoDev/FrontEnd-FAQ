@@ -1,8 +1,6 @@
 "use client"
 
 import { getCookie } from "cookies-next"
-import { signOut } from "next-auth/react"
-import { redirect } from "next/navigation"
 
 export const fetchClient = async (
     input: string | URL | Request,
@@ -18,8 +16,8 @@ export const fetchClient = async (
         },
     })
 
-    if (response.status === 401){
-         console.warn("Sessão expirada. Por favor, faça login novamente.");
+    if (response.status === 401 || response.status === 400 || response.status === 404 ){
+         console.log("Sessão expirada. Por favor, faça login novamente.");
     }
 
     return response

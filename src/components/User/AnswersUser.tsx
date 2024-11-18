@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import useUserUrl from "@/libs/useUserUrl";
 import { getanswersusers } from "@/app/api/answers/getanswersusers";
+import EditDeleteAnswer from "../Utils/EditDeleteAnswer";
 
 export default function AnswersUser() {
     const api = useUserUrl()
-    console.log(api)
     const [answers, SetAnswers] = useState<[]>([]);
 
     
@@ -23,7 +23,6 @@ export default function AnswersUser() {
       fetchQuestions();
   }, [api]);
 
-    console.log(answers)
     return (
         <div className="flex flex-col mb-10 mt-10 gap-6">
 
@@ -44,12 +43,7 @@ export default function AnswersUser() {
           <p className="px-2">{answer.answer}</p>
 
           <div className="flex px-2 gap-4 mt-2 mb-2 ">
-            <button>
-              <Image src={"/icon-like.png"} alt="Image icon-like" width={18} height={18} />
-            </button>
-            <button className="rotate-180">
-              <Image src={"/icon-like.png"} alt="Image icon-like" width={18} height={18} />
-            </button>
+            <EditDeleteAnswer value={answer.id}/>
           </div>
         </div>
       )))|| "Não existe resposta para essa pergunta"}

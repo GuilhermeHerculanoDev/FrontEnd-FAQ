@@ -108,7 +108,7 @@ export default function NavBarQuestions(value: any) {
                 filteredQuestions.map((question) => (
                   <div
                     key={question.id}
-                    className="flex flex-col gap-2.5 p-2 border border-black rounded-md w-full"
+                    className="flex flex-col shadow-md gap-2.5 p-2 border border-black rounded-md w-full"
                   >
                     <div className="flex justify-between cursor-pointer">
                       <div className="flex gap-2 items-center mb-2 px-2">

@@ -1,9 +1,9 @@
-import { deletequestion } from "@/app/api/questions/deletequestion";
-import { editionquestion } from "@/app/api/questions/editionquestions";
+import { deleteanswer } from "@/app/api/admin/answers/deleteanswers";
+import { editionanswers } from "@/app/api/answers/editanswers";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function EdiDeleteControls(value: any) {
+export default function EditDeleteAnswer(value: any) {
     const [showScreenDelete, SetShowScreenDelete] = useState(false);
     const [showScreenEdition, SetShowScreenEdition] = useState(false);
     const [ messageError ,SetmessageError] = useState<string | null>(null)
@@ -13,26 +13,26 @@ export default function EdiDeleteControls(value: any) {
         const formData = new FormData(e.currentTarget);
 
         const data = {
-            id_questions: value.value,
-            title: formData.get("InputTitle"),
-            description: formData.get("InputDescription"),
+            id: value.value,
+            answer: formData.get("InputAnswer"),
         };
 
         const filteredData = Object.fromEntries(
             Object.entries(data).filter(([_, value]) => value !== "" && value !== null)
         );
 
-        if (Object.keys(filteredData).length === 1 && filteredData.id) {
+        if (Object.keys(filteredData).length === 1 && filteredData.answer) {
             return SetmessageError("Preença pelo menos um campo.");
         }
 
-        const edition = await editionquestion(filteredData);
+        const edition = await editionanswers(filteredData);
+        
+        if(edition === "Editada com sucesso"){
+            SetShowScreenEdition(false);
+            location.reload();
+        }
 
-        alert(edition);
-
-        SetShowScreenEdition(false);
-
-        location.reload();
+        alert("Error ao Editar Resposta")
     }
 
     return (
@@ -55,7 +55,7 @@ export default function EdiDeleteControls(value: any) {
                             <button onClick={() => SetShowScreenDelete(false)} className="bg-blue-500 text-white px-4 py-2 rounded">
                                 Cancelar
                             </button>
-                            <button onClick={() => deletequestion(value.value)} className="bg-blue-500 text-white px-4 py-2 rounded">
+                            <button onClick={() => {deleteanswer(value.value); alert("deletada com sucesso"); location.reload()}} className=" bg-red-500 text-white px-4 py-2 rounded">
                                 Deletar
                             </button>
                         </div>
@@ -69,15 +69,8 @@ export default function EdiDeleteControls(value: any) {
                         <div className="flex flex-col items-center gap-6">
                             <input
                                 className="w-[300px] bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
-                                name="InputTitle"
-                                placeholder="Edite o titulo da Pergunta"
-                                type="text"
-                            />
-
-                            <input
-                                className="w-[300px] bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
-                                name="InputDescription"
-                                placeholder="Edite a descrição da pergunta"
+                                name="InputAnswer"
+                                placeholder="Edite a sua resposta"
                                 type="text"
                             />
                         </div>

@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { fetchClient } from "@/libs/fetchClient";
-import { getquestionscategory } from "@/app/api/questions/getquestionscategoyr";
+import { getallquestions } from "@/app/api/questions/getallquestions";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,12 +8,11 @@ import Link from "next/link";
 export default function CardsQuestions(value: any) {
   const [active, setActive] = useState<Record<number, boolean>>({});
   const [questions, setQuestions] = useState<[]>([]);
-  let url = value.value
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await getquestionscategory(url);
+        const response = await getallquestions();
         setQuestions(response || []);
       } catch (error) {
         console.error("Erro ao carregar Perguntas:", error);
@@ -29,12 +27,11 @@ export default function CardsQuestions(value: any) {
       [questionId]: !prev[questionId],  
     }));
   }
-  
 
     return (
       <div className="flex flex-col items-center mb-10 gap-6">
-        {questions.map((question:any) => (
-        <div key={question.id} className={"flex flex-col gap-2.5 p-2 border border-black rounded-md w-4/5 "}>
+        {questions.slice(0,3).map((question:any) => (
+        <div key={question.id} className={"flex flex-col shadow-md gap-2.5 p-2 border border-black rounded-md w-4/5 "}>
           <div className="flex justify-between cursor-pointer">
             <div className="flex gap-2 items-center mb-2 px-2">
               <Image src={"/profile.png"} alt="Image icon-profile" width={"30"} height={"30"}/>

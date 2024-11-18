@@ -76,10 +76,13 @@ export default function NavBar() {
 
           <div>
             { userLogin ? (
-              <><Image src={"/profile.png"} alt="Image User" width={"30"} height={"30"}/><p>{dataUser?.name}</p></>
+              <Link href={"/profile"} className="flex gap-2 justify-center items-center">
+                <p className="font-semibold text-lg	">{dataUser?.name}</p>
+                <Image src={"/profile.png"} alt="Image User" width={"30"} height={"30"}/>
+              </Link>
             ) : <button className="bg-blue-600 text-white text-sm py-1 px-7 rounded-md">
-            <Link href="/login">Login</Link>
-          </button> 
+                  <Link href="/login">Login</Link>
+                </button> 
             }
           </div>
         </div>    

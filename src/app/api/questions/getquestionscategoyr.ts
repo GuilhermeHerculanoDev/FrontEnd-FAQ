@@ -7,11 +7,11 @@ export const getquestionscategory = async (value:any) => {
       method: "GET",
     });
   
-    if (response.status === 400) {
+    if (!response.ok) {
       const user = await response.json();
       if (user.message) {
         console.log(user.message);
-        return user.message;
+        return [];
       }
     }
   

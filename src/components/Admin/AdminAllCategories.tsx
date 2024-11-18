@@ -58,7 +58,7 @@ export default function AdminAllCategories() {
                                 <td className="px-4 py-2 border-b">{category.category_name}</td>
                                 <td className="px-4 py-2 border-b">{category.category_description}</td>
                                 <td className="px-4 py-2 border-b">
-                                <button className="text-red-500 hover:underline" onClick={() => deletecayegories(category.id)}>Delete</button>
+                                <button className="text-red-500 hover:underline" onClick={() => {deletecayegories(category.id); location.reload()}}>Delete</button>
                                 </td>
                             </tr>         
                             

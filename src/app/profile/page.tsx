@@ -1,10 +1,11 @@
-import NavBar from "@/components/NavBar"
+import NavBar from "@/components/Utils/NavBar"
 import Image from "next/image"
-import InfoUsers from "@/components/InfoUsers"
-import QuestionsUser from "@/components/QuestionsUser"
-import AnswersUser from "@/components/AnswersUser"
-import Footer from "@/components/Footer"
-import UserNotLogged from "@/components/UserNotLogged";
+import InfoUsers from "@/components/User/InfoUsers"
+import QuestionsUser from "@/components/User/QuestionsUser"
+import AnswersUser from "@/components/User/AnswersUser"
+import Footer from "@/components/Utils/Footer"
+import UserNotLogged from "@/components/User/UserNotLogged";
+import SingOut from "@/components/Utils/SingOut"
   
 export default function PageProfile ()  {
 
@@ -34,6 +35,9 @@ export default function PageProfile ()  {
 
             <AnswersUser />
 
+            <div className="flex justify-center mt-20 mb-10">
+                <SingOut />
+            </div>
 
             <Footer />
         </div>

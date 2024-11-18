@@ -1,6 +1,6 @@
-import NavBar from "@/components/NavBar";
-import FormCreateQuestion from "@/components/FormCreateQuestion";
-import UserNotLogged from "@/components/UserNotLogged";
+import NavBar from "@/components/Utils/NavBar";
+import FormCreateQuestion from "@/components/Forms/FormCreateQuestion";
+import UserNotLogged from "@/components/User/UserNotLogged";
 
 interface QuestionProps {
   params: {

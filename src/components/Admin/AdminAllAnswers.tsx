@@ -1,24 +1,24 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { getallquestions } from "@/app/api/questions/getallquestions";
-import { deletequestion } from "@/app/api/admin/questions/deletequestion";
+import { getallanswers } from "@/app/api/admin/answers/getallanswers";
+import { deleteanswer } from "@/app/api/admin/answers/deleteanswers";
 
-export default function AdminAllQuestions() {
-    const [allQuestions, SetAllQuestions] = useState<[]>([])
+export default function AdminAllAnswers() {
+    const [allAnswers, SetAllAnswers] = useState<[]>([])
 
     useEffect(() => {
         const fetchQuestions = async () => {
           try {
-            const response = await getallquestions();
-            SetAllQuestions(response || []);
+            const response = await getallanswers();
+            SetAllAnswers(response || []);
           } catch (error) {
-            console.error("Erro ao carregar perguntas:", error);
+            console.error("Erro ao carregar respostas:", error);
           } 
         }
         fetchQuestions();
     }, []);
-    console.log(allQuestions)
+    console.log(allAnswers)
 
     return (
     <div className="flex-1 ml-[250px] p-6 bg-gray-50">
@@ -28,34 +28,36 @@ export default function AdminAllQuestions() {
                     </div>
 
                     <div className="bg-white shadow-md rounded-lg p-5">
-                        <h2 className="text-xl font-semibold mb-4">Questions Information</h2>
+                        <h2 className="text-xl font-semibold mb-4">Answers Information</h2>
                         <table className="min-w-full table-auto">
                             <thead>
                             <tr>
                                 <th className="px-4 py-2 text-left bg-gray-100">User</th>
                                 <th className="px-4 py-2 text-left bg-gray-100">Date</th>
-                                <th className="px-4 py-2 text-left bg-gray-100">Title</th>
-                                <th className="px-4 py-2 text-left bg-gray-100">Description</th>
+                                <th className="px-4 py-2 text-left bg-gray-100">Answer</th>
+                                <th className="px-4 py-2 text-left bg-gray-100">User_Id</th>
+                                <th className="px-4 py-2 text-left bg-gray-100">Question_Id</th>
                                 <th className="px-4 py-2 text-left bg-gray-100">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
-                            { allQuestions.length == 0 ?(
+                            { allAnswers.length == 0 ?(
                             <tr>
                             <td colSpan={4} className="text-center py-4">
                                 Nenhuma Questão disponível
                             </td>
                             </tr>
                         ) :
-                            allQuestions.map((question:any) => (
+                            allAnswers.map((answer:any) => (
                                 
-                            <tr key={question.id}>
-                                <td className="px-4 py-2 border-b">{question.user.name}</td>
-                                <td className="px-4 py-2 border-b">{new Date(question.date).toLocaleDateString()}</td>
-                                <td className="px-4 py-2 border-b">{question.title}</td>
-                                <td className="px-4 py-2 border-b">{question.description}</td>
+                            <tr key={answer.id}>
+                                <td className="px-4 py-2 border-b">{answer.user.name}</td>
+                                <td className="px-4 py-2 border-b">{new Date(answer.date).toLocaleDateString()}</td>
+                                <td className="px-4 py-2 border-b">{answer.answer}</td>
+                                <td className="px-4 py-2 border-b text-center">{answer.users_id}</td>
+                                <td className="px-4 py-2 border-b text-center">{answer.question_id}</td>
                                 <td className="px-4 py-2 border-b">
-                                <button className="text-red-500 hover:underline" onClick={() => deletequestion(question.id)}>Delete</button>
+                                <button className="text-red-500 hover:underline" onClick={() => { deleteanswer(answer.id); location.reload() }}>Delete</button>
                                 </td>
                             </tr>         
                             

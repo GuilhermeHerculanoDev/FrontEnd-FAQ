@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createuser } from "@/app/api/users/createuser";
-import Button from "./Button";
 
 export default function FormRegister() {
   const router = useRouter()
@@ -24,6 +23,10 @@ export default function FormRegister() {
       return setError("A senhas não coincidem")
     }
 
+    if (!data.name || !data.email || !data.password) {
+      return setError("Preencha todos os campos obrigatórios.")
+    }
+
     const response = await createuser(data)
 
     if(response === "Usuario cadastrado com sucesso"){
@@ -42,7 +45,7 @@ export default function FormRegister() {
         <div className="flex flex-col gap-2">
           <label htmlFor="inputName">Nome</label>
           <input
-            className="w-[440px] h-[33px] bg-white border border-[#696F79] rounded-md text-black pl-2 outline-none"
+            className="w-[440px] h-[33px] bg-white border border-gray-300 rounded-md text-black pl-2 outline-none"
             name="InputName"
             type="text"
           />
@@ -51,7 +54,7 @@ export default function FormRegister() {
         <div className="flex flex-col gap-2">
           <label htmlFor="inputEmail">Email</label>
           <input
-            className="w-[440px] h-[33px] bg-white border border-[#696F79] rounded-md text-black pl-2 outline-none"
+            className="w-[440px] h-[33px] bg-white border border-gray-300 rounded-md text-black pl-2 outline-none"
             name="InputEmail"
             type="email"
           />
@@ -60,7 +63,7 @@ export default function FormRegister() {
         <div className="flex flex-col gap-2">
           <label htmlFor="inputPassword">Senha</label>
           <input
-            className="w-[440px] h-[33px] bg-white border border-[#696F79] rounded-md text-black pl-2 outline-none"
+            className="w-[440px] h-[33px] bg-white border border-gray-300 rounded-md text-black pl-2 outline-none"
             name="InputPassword"
             type="password"
           />
@@ -69,7 +72,7 @@ export default function FormRegister() {
         <div className="flex flex-col gap-2">
           <label htmlFor="inputConfirmPassword">Confirmar Senha</label>
           <input
-            className="w-[440px] h-[33px] bg-white border border-[#696F79] rounded-md text-black pl-2 outline-none"
+            className="w-[440px] h-[33px] bg-white border border-gray-300 rounded-md text-black pl-2 outline-none"
             name="InputConfirmPassword"
             type="password"
           />
@@ -77,7 +80,10 @@ export default function FormRegister() {
 
         <p className="text-red-500 ml-0.75">{error}</p>
 
-        <Button value="Register" />
+        <input className="w-[440px] bg-[#2C73EB] p-1 text-white border-white rounded-md"
+            type="submit"
+            value={'Resgister'}
+            />
       </form>
     </div>
   );

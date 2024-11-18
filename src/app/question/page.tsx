@@ -1,5 +1,5 @@
-import NavBar from "@/components/NavBar"
-import AllQuestions from "@/components/AllQuestions"
+import NavBar from "@/components/Utils/NavBar"
+import AllQuestions from "@/components/Questions/AllQuestions"
 
 export default function Page() {
     return (

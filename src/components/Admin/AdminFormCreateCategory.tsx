@@ -44,7 +44,7 @@ export default function AdminFormCreateCategory() {
             <div className="bg-white shadow-md rounded-lg p-5">
                 <div className="space-y-6">
                     <div className="flex flex-col">
-                        <label htmlFor="inputName" className="text-sm font-medium">Nome</label>
+                        <label htmlFor="inputName" className="text-sm ">Nome</label>
                         <input
                             id="inputName"
                             className="w-full h-[40px] px-3 mt-2 border border-gray-300 rounded-md outline-none"
@@ -55,7 +55,7 @@ export default function AdminFormCreateCategory() {
                     </div>
 
                     <div className="flex flex-col">
-                        <label htmlFor="inputDescription" className="text-sm font-medium">Descrição</label>
+                        <label htmlFor="inputDescription" className="text-sm ">Descrição</label>
                         <textarea
                             id="inputDescription"
                             name="inputDescription"

@@ -60,13 +60,13 @@ export default function FormEditInfoUsers( value: any) {
 
     return (
         <div>
-        <form className="flex flex-col justify-center items-center gap-4" onSubmit={editInfo}>
+        <form className="flex flex-col bg-white justify-center items-center gap-4" onSubmit={editInfo}>
             <div className="flex gap-20 mt-6">
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col">
                         <label htmlFor="InputName">Nome</label>
                         <input
-                            className=" w-[300px] bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className=" w-[300px] bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputName"
                             placeholder="Nome do usuario"
                             type="text"
@@ -75,7 +75,7 @@ export default function FormEditInfoUsers( value: any) {
                     <div className="flex flex-col">
                         <label htmlFor="InputEmail">Email</label>
                         <input
-                            className=" bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className=" bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputEmail"
                             placeholder="Email do usuario"
                             type="email"
@@ -84,7 +84,7 @@ export default function FormEditInfoUsers( value: any) {
                     <div className="flex flex-col">
                     <label htmlFor="InputPassword">New Password</label>
                         <input
-                            className=" bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className=" bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputPassword"
                             placeholder="Senha do usuario"
                             type="text"
@@ -96,7 +96,7 @@ export default function FormEditInfoUsers( value: any) {
                     <div className="flex flex-col">
                         <label htmlFor="InputDescription">Description</label>
                         <input
-                            className=" bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className=" bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputDescription"
                             placeholder="Edição do usuario"
                             type="text"
@@ -105,7 +105,7 @@ export default function FormEditInfoUsers( value: any) {
                     <div className="flex flex-col">
                         <label htmlFor="InputTelephone">Telefone</label>
                         <input
-                            className=" w-[300px] bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className=" w-[300px] bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputTelephone"
                             placeholder="Telefone do usuario"
                             type="number"
@@ -114,7 +114,7 @@ export default function FormEditInfoUsers( value: any) {
                     <div className="flex flex-col">
                     <label htmlFor="InputConfirmPassword">Confirm Password</label>
                         <input
-                            className=" bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className=" bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputConfirmPassword"
                             placeholder="Confirme a senha usuario"
                             type="text"
@@ -125,8 +125,8 @@ export default function FormEditInfoUsers( value: any) {
             { messageError && 
                 <p className="text-red-500">{messageError}</p>
             }
-           <div className="flex flex-row gap-4 mt-1">
-                <button className=" px-2 py-2 border border-black rounded flex-1" type="button">
+           <div className="flex flex-row gap-4 mt-2">
+                <button className=" px-2 py-2 border border-gray-300 rounded flex-1" type="button">
                     <Link href={"/profile"}>Cancelar</Link>
                 </button>
                 <button className="bg-[#2C73EB] border border-[#2C73EB] rounded text-white text-center flex-1 py-2 px-2" type="submit">
@@ -143,7 +143,7 @@ export default function FormEditInfoUsers( value: any) {
                     <div className="flex flex-col items-center gap-6">
                         <label htmlFor="InputVerifyPassword">Digite a sua senha atual</label>
                         <input
-                            className="w-[300px] bg-white border border-black rounded-md text-black pl-2.5 p-1 outline-none"
+                            className="w-[300px] bg-white border border-gray-300 rounded-md text-black pl-2.5 p-1 outline-none"
                             name="InputVerifyPassword"
                             type="text"
                         />
@@ -152,7 +152,7 @@ export default function FormEditInfoUsers( value: any) {
                         <p className="text-red-500">{messageErrorPassword}</p>
                     }
                     <div className="flex gap-5 justify-center">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded" type="button">
+                        <button className="border border-gray-300 text-black px-4 py-2 rounded" type="button">
                             <Link href={"/profile"}>Cancelar</Link>
                         </button>
                         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Entrar</button>

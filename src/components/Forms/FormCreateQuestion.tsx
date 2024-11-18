@@ -54,8 +54,9 @@ export default function FormCreateQuestion({ value }: { value: any }) {
 
     try {
       const responseMessage = await createquestion(data);
-      if (responseMessage.ok) {
+      if (responseMessage === "Pergunta criada com sucesso") {
         alert("Pergunta criada com sucesso")
+        setError(false);
         router.back();
       }
       setError(true);
@@ -90,7 +91,7 @@ export default function FormCreateQuestion({ value }: { value: any }) {
         <div className="flex flex-col gap-2.5">
           <label htmlFor="InputTitle">Title</label>
           <input
-            className="w-[600px] h-[33px] bg-white border border-[rgba(0,0,0,0.25)] rounded-md text-black pl-2.5 outline-none"
+            className="w-[600px] h-[33px] bg-white border border-[rgba(0,0,0,0.25)] text-lg rounded-md text-black pl-2.5 outline-none"
             name="InputTitle"
             type="text"
             placeholder="Enter the title of your question"
@@ -101,7 +102,7 @@ export default function FormCreateQuestion({ value }: { value: any }) {
           <label htmlFor="InputDescription">Description</label>
           <textarea
             name="InputDescription"
-            className="w-[600px] h-48 p-4 border border-gray-300 rounded-lg text-lg resize-none focus:outline-none placeholder-gray-400"
+            className="w-[600px] h-48 p-2 border border-gray-300 rounded-lg text-lg resize-none focus:outline-none placeholder-gray-400"
             placeholder="Digite a Descrição" />
         </div>
 

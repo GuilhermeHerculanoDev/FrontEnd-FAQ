@@ -1,7 +1,7 @@
 import { fetchClient } from "@/libs/fetchClient";
 
 export const getanswersusers = async (value:any) => {
-
+  if(value){
     const response = await fetchClient(`http://localhost:3000/answers/searchAnswersUser/${value}`, {
       method: "GET",
     });
@@ -17,6 +17,7 @@ export const getanswersusers = async (value:any) => {
     if (response.status === 200) {
       return await response.json();
     }
+  }
   
     return null;
   };

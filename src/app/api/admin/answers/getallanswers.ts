@@ -1,6 +1,5 @@
 import { fetchClient } from "@/libs/fetchClient";
 
-
 export const getallanswers = async () => {
 
     const response = await fetchClient(`http://localhost:3000/answers`, {
