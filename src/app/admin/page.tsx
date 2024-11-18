@@ -1,5 +1,3 @@
-import Image from "next/image"
-import NavBarAdmin from "@/components/NavBarAdmin"
 import Link from "next/link"
 
 export default function Page() {

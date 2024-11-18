@@ -54,8 +54,6 @@ export default function FormEditInfoUsers( value: any) {
             return SetmessageError("Preença pelo menos um campo.");
         }
 
-        console.log(filteredData)
-
         const api = await edituser(filteredData)
         alert(api)
     }

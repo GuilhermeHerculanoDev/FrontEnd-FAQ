@@ -20,7 +20,7 @@ export default function NavBar() {
     const fetchQuestions = async () => {
       try {
         const response = await getuser(iduser);
-        if(response.name){
+        if(response){
           SetDataUser(response)
           SetUserLogin(true);
         }

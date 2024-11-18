@@ -1,12 +1,12 @@
 import NavBarAdmin from "@/components/NavBarAdmin"
-import AdminAllAnswers from "@/components/AdminAllAnswers"
+import AdminFormCreateCategory from "@/components/AdminFormCreateCategory"
 
 export default function Page() {
     return (
         <div>
             <NavBarAdmin />
 
-            <AdminAllAnswers />
+            <AdminFormCreateCategory />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-export const createuser = async (data: { name: FormDataEntryValue | null; email: FormDataEntryValue | null; password: FormDataEntryValue | null }) => {
+export const createuser = async (data:any) => {
 
     const response = await fetch("http://localhost:3000/users", {
         method: 'POST',

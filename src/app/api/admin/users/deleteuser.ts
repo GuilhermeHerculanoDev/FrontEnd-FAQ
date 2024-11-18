@@ -1,13 +1,13 @@
 import { fetchClient } from "@/libs/fetchClient";
 
 
-export const getallcategory = async () => {
+export const deleteuser = async (value:any) => {
 
-    const response = await fetch(`http://localhost:3000/category`, {
-      method: "GET",
+    const response = await fetchClient(`http://localhost:3000/users/${value}`, {
+      method: "DELETE",
     });
   
-    if (response.status === 400) {
+    if (!response.ok) {
       const user = await response.json();
       if (user.message) {
         console.log(user.message);

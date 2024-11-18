@@ -1,12 +1,12 @@
 import NavBarAdmin from "@/components/NavBarAdmin"
-import AdminAllAnswers from "@/components/AdminAllAnswers"
+import AdminFormCreateUser from "@/components/AdminFormCreateUser"
 
 export default function Page() {
     return (
         <div>
             <NavBarAdmin />
 
-            <AdminAllAnswers />
+            <AdminFormCreateUser />
         </div>
     )
 }

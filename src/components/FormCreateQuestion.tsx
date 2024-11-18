@@ -49,7 +49,7 @@ export default function FormCreateQuestion({ value }: { value: any }) {
 
   if (Object.keys(filteredData).length === 1 && filteredData.users_id) {
       setError(true)
-      return SetMessageError("Preença todos os campos.");
+      return SetMessageError("Preencha todos os campos.");
   }
 
     try {

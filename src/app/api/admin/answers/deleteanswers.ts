@@ -1,10 +1,9 @@
 import { fetchClient } from "@/libs/fetchClient";
 
-
-export const deletequestion = async (value:any) => {
+export const deleteanswer = async (value:any) => {
     console.log("Dados a serem enviados:", value);
   
-    const response = await fetchClient(`http://localhost:3000/questions/${value}`, {
+    const response = await fetchClient(`http://localhost:3000/answers/${value}`, {
       method: "DELETE",
     });
   
@@ -16,7 +15,7 @@ export const deletequestion = async (value:any) => {
       }
     }
   
-    if (response.status === 201) {
+    if (response.status === 200) {
       return "Questão apagada com sucesso";
     }
   
