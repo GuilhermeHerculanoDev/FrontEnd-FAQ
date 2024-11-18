@@ -18,6 +18,9 @@ export default function Login() {
               Sign up here
             </Link>
           </p>
+          <Link href="/" className="text-white bg-blue-500 text-sm border border-blue-500 p-1 rounded">
+              Entra sem fazer login
+          </Link>
         </div>
       </div>
     </div>

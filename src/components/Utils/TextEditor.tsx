@@ -3,6 +3,7 @@
 import { useState } from "react";
 import useUserUrl from "@/libs/useUserUrl";
 import { createanswers } from "@/app/api/answers/createanswers";
+import UserNotLogged from "../User/UserNotLogged";
 
 export default function TextEdit({ value }: { value: any }) {
   const [viewContainer, SetViewContainer] = useState(false);
@@ -47,6 +48,7 @@ export default function TextEdit({ value }: { value: any }) {
       }
       {viewContainer && (
         <form className="flex flex-col w-full items-center my-4" onSubmit={answerQuestion}>
+          <UserNotLogged />
           <textarea name="inputAnswers" className="w-4/5 h-48 p-4 border border-black rounded-lg text-lg resize-none outile-none" 
             placeholder="Digite a sua resposta"
             value={answer}

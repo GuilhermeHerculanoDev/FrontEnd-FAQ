@@ -29,7 +29,7 @@ export default function FormRegister() {
 
     const response = await createuser(data)
 
-    if(response === "Usuario cadastrado com sucesso"){
+    if(response === "Usuário cadastrado com sucesso"){
       alert("Usuario criado com sucesso")
       setError(null)
       return router.push("/login")
