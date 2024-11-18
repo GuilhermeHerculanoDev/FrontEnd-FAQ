@@ -12,6 +12,7 @@ export default function Category(){
                 <CardsPopularCategory value={100}/>
             </div>
 
+            <Footer />
         </div>
     )
 }

@@ -24,8 +24,8 @@ export default function AdminAllCategories() {
     return (
     <div className="flex-1 ml-[250px] p-6 bg-gray-50">
                     <div className="mb-5">
-                        <h1 className="text-3xl font-bold">Screen Admin</h1>
-                        <p className="text-lg text-gray-600">Informações sobre os usuarios</p>
+                        <h1 className="text-3xl font-bold">Categorias</h1>
+                        <p className="text-lg text-gray-600">Informações sobre as Categorias</p>
                     </div>
 
                     <div className="bg-white shadow-md rounded-lg p-5">

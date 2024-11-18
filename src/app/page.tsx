@@ -22,7 +22,7 @@ export default async function Home() {
       </div>
 
       <div className="flex flex-col items-center mt-20 gap-2">
-        <h1 className="font-bold">Popular Categories</h1>
+        <h1 className="font-bold text-lg">Popular Categories</h1>
         <CardsPopularCategory value={6}/>
       </div>
 

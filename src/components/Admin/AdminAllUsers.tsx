@@ -24,7 +24,7 @@ export default function AdminAllUsers() {
     return (
     <div className="flex-1 ml-[250px] p-6 bg-gray-50">
                     <div className="mb-5">
-                        <h1 className="text-3xl font-bold">Screen Admin</h1>
+                        <h1 className="text-3xl font-bold">Usúarios</h1>
                         <p className="text-lg text-gray-600">Informações sobre os usuarios</p>
                     </div>
 

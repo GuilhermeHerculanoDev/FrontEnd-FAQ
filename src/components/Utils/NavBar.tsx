@@ -37,7 +37,7 @@ export default function NavBar() {
       <div className="border-b border-gray-400">
         <div className="flex justify-between items-center m-5">
           <div>
-            <Link href={"/"}>FAQ</Link>
+            <Link href={"/"} className="text-xl	">FAQ</Link>
           </div>
 
           <div className="flex gap-16">
